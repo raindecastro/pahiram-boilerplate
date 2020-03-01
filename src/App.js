@@ -1,5 +1,7 @@
 import React from 'react';
+import useInput from './useInput';
 import logo from './logo.svg';
+import { Input, Button } from 'antd';
 import './App.css';
 
 function App() {
@@ -7,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="paragraph">
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -19,8 +21,15 @@ function App() {
           Learn React
         </a>
       </header>
+      <TestInput />
+      <TestInput />
     </div>
   );
 }
+
+const TestInput = () => {
+  const [value, setValue] = useInput();
+  return <Input value={value} onChange={e => setValue(e.target.value)} />;
+};
 
 export default App;
